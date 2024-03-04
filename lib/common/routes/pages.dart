@@ -5,6 +5,8 @@ import 'package:ecommerceapp/global.dart';
 
 import 'package:ecommerceapp/pages/application/applicaiton.dart';
 import 'package:ecommerceapp/pages/application/bloc/app_bloc.dart';
+import 'package:ecommerceapp/pages/home_page/bloc/home_page_bloc.dart';
+import 'package:ecommerceapp/pages/home_page/home_page.dart';
 import 'package:ecommerceapp/pages/register_page.dart/bloc/register_page_bloc.dart';
 import 'package:ecommerceapp/pages/register_page.dart/register_page.dart';
 import 'package:ecommerceapp/pages/sign_in_Screen/bloc/sing_in_bloc.dart';
@@ -45,6 +47,13 @@ class AppPages {
           create: (_) => AppBlocs(),
         ),
       ),
+      PageEntity(
+        route: AppRoutes.HOME_PAGE,
+        page: const HomePage(),
+        bloc: BlocProvider(
+          create: (_) => HomePageBlocs(),
+        ),
+      ),
     ];
   }
 
@@ -71,6 +80,7 @@ class AppPages {
         // meaning the onboarding screen is seen by the use once already ,
         // push the user to signIn page and everytime he logs in push
         //him to signIn page not onboarding page . But if he uninstall the app, everything gets reset
+        //!
         if (result.first.route == AppRoutes.INITIAL && deviceFirstOpen) {
           //* To check if user is loged in already
           bool isLogedIn = Global.storageService.getIsLogedIn();
@@ -82,6 +92,7 @@ class AppPages {
           return MaterialPageRoute(
               builder: (_) => const SignInPage(), settings: settings);
         }
+        //!
         return MaterialPageRoute(
           builder: (_) => result.first.page,
           settings: settings,

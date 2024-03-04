@@ -1,12 +1,13 @@
 // ignore_for_file: file_names
 
 import 'package:ecommerceapp/common/utils/app_color.dart';
+import 'package:ecommerceapp/pages/home_page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget buildPage(int index) {
   List<Widget> widget = const [
-    Center(child: Text("Home")),
+    HomePage(),
     Center(child: Text("Search")),
     Center(child: Text("Course")),
     Center(child: Text("Chat")),
