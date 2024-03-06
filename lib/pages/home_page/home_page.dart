@@ -23,20 +23,84 @@ class _HomePageState extends State<HomePage> {
         builder: (context, state) {
           return Container(
             margin: EdgeInsets.symmetric(vertical: 0, horizontal: 25.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                homePageText(
-                  "HELLO",
-                  color: AppColors.primaryThreeElementText,
-                  top: 20,
+            child: CustomScrollView(
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              slivers: [
+                SliverToBoxAdapter(
+                  child: homePageText(
+                    "HELLO",
+                    color: AppColors.primaryThreeElementText,
+                    top: 20,
+                  ),
                 ),
-                homePageText("Vishal", top: 5),
-                SizedBox(
-                  height: 20.h,
+                SliverToBoxAdapter(child: homePageText("Vishal", top: 5)),
+                SliverPadding(
+                  padding: EdgeInsets.only(top: 20.h),
                 ),
-                searchView(),
-                sliderView(context, state),
+                SliverToBoxAdapter(child: searchView()),
+                SliverToBoxAdapter(child: sliderView(context, state)),
+                SliverToBoxAdapter(child: menuView()),
+                SliverPadding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 18.h, horizontal: 0.w),
+                  sliver: SliverGrid(
+                    delegate: SliverChildBuilderDelegate(
+                      childCount: 4,
+                      (BuildContext context, int index) {
+                        return GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            padding: EdgeInsets.all(10.w),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15.w),
+                              image: const DecorationImage(
+                                fit: BoxFit.fill,
+                                image: AssetImage("assets/icons/Image(1).png"),
+                              ),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "best course for IT and Engineering",
+                                  maxLines: 1,
+                                  overflow: TextOverflow.fade,
+                                  textAlign: TextAlign.left,
+                                  softWrap: false,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 11.sp,
+                                  ),
+                                ),
+                                Text(
+                                  "Flutter best course",
+                                  maxLines: 1,
+                                  overflow: TextOverflow.fade,
+                                  textAlign: TextAlign.left,
+                                  softWrap: false,
+                                  style: TextStyle(
+                                    color: AppColors.primaryFourElementText,
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 8.sp,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 15,
+                      mainAxisSpacing: 15,
+                      childAspectRatio: 1.6,
+                    ),
+                  ),
+                ),
               ],
             ),
           );

@@ -111,6 +111,9 @@ Widget searchView() {
           ],
         ),
       ),
+      SizedBox(
+        width: 5.w,
+      ),
       GestureDetector(
         child: Container(
           width: 40.w,
@@ -174,6 +177,126 @@ Widget _slidersContainer({String path = "assets/icons/Art.png"}) {
           path,
         ),
       ),
+    ),
+  );
+}
+
+Widget menuView() {
+  return Column(
+    children: [
+      Container(
+        width: 325.w,
+        margin: EdgeInsets.only(top: 15.h),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            _reusableText("Choose your course"),
+            GestureDetector(
+              child: _reusableText(
+                "See all",
+                fontSize: 12,
+                color: AppColors.primaryThreeElementText,
+              ),
+            ),
+          ],
+        ),
+      ),
+      Container(
+        margin: EdgeInsets.only(top: 15.w),
+        child: Row(
+          children: [
+            _listTitles("All"),
+            _listTitles("Popular",
+                textColor: AppColors.primaryThreeElementText,
+                backGroundColor: Colors.white),
+            _listTitles("Newest",
+                textColor: AppColors.primaryThreeElementText,
+                backGroundColor: Colors.white),
+          ],
+        ),
+      )
+    ],
+  );
+}
+
+Widget _reusableText(
+  String text, {
+  Color color = AppColors.primaryText,
+  int fontSize = 16,
+  FontWeight fontWeight = FontWeight.bold,
+}) {
+  return Text(
+    text,
+    style: TextStyle(
+      color: color,
+      fontWeight: fontWeight,
+      fontSize: fontSize.sp,
+    ),
+  );
+}
+
+Widget _listTitles(
+  String text, {
+  Color textColor = AppColors.primaryElementText,
+  Color backGroundColor = AppColors.primaryElement,
+}) {
+  return Container(
+    margin: EdgeInsets.only(right: 20.w),
+    padding: EdgeInsets.only(left: 15.w, right: 15.w, top: 5.h, bottom: 5.h),
+    decoration: BoxDecoration(
+      color: backGroundColor,
+      borderRadius: BorderRadius.circular(7.w),
+      border: Border.all(color: backGroundColor),
+    ),
+    child: _reusableText(
+      text,
+      color: textColor,
+      fontSize: 12,
+      fontWeight: FontWeight.normal,
+    ),
+  );
+}
+
+Widget courseGrid() {
+  return Container(
+    padding: EdgeInsets.all(10.w),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(15.w),
+      image: const DecorationImage(
+        fit: BoxFit.fill,
+        image: AssetImage("assets/icons/Image(1).png"),
+      ),
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "best course for IT and Engineering",
+          maxLines: 1,
+          overflow: TextOverflow.fade,
+          textAlign: TextAlign.left,
+          softWrap: false,
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 11.sp,
+          ),
+        ),
+        Text(
+          "Flutter best course",
+          maxLines: 1,
+          overflow: TextOverflow.fade,
+          textAlign: TextAlign.left,
+          softWrap: false,
+          style: TextStyle(
+            color: AppColors.primaryFourElementText,
+            fontWeight: FontWeight.normal,
+            fontSize: 8.sp,
+          ),
+        )
+      ],
     ),
   );
 }
