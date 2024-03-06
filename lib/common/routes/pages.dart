@@ -3,10 +3,12 @@
 import 'package:ecommerceapp/common/routes/names.dart';
 import 'package:ecommerceapp/global.dart';
 
-import 'package:ecommerceapp/pages/application/applicaiton.dart';
-import 'package:ecommerceapp/pages/application/bloc/app_bloc.dart';
+import 'package:ecommerceapp/pages/application_page/applicaiton.dart';
+import 'package:ecommerceapp/pages/application_page/bloc/app_bloc.dart';
 import 'package:ecommerceapp/pages/home_page/bloc/home_page_bloc.dart';
 import 'package:ecommerceapp/pages/home_page/home_page.dart';
+import 'package:ecommerceapp/pages/profile_page/settings_folder/bloc/settings_bloc.dart';
+import 'package:ecommerceapp/pages/profile_page/settings_folder/settings.dart';
 import 'package:ecommerceapp/pages/register_page.dart/bloc/register_page_bloc.dart';
 import 'package:ecommerceapp/pages/register_page.dart/register_page.dart';
 import 'package:ecommerceapp/pages/sign_in_Screen/bloc/sing_in_bloc.dart';
@@ -52,6 +54,13 @@ class AppPages {
         page: const HomePage(),
         bloc: BlocProvider(
           create: (_) => HomePageBlocs(),
+        ),
+      ),
+      PageEntity(
+        route: AppRoutes.SETTINGS_PAGE,
+        page: const SettingPage(),
+        bloc: BlocProvider(
+          create: (_) => SettingsBlocs(),
         ),
       ),
     ];
