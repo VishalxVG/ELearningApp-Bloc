@@ -2,7 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:ecommerceapp/pages/welcome_page/bloc/welcome_bloc.dart';
 import 'package:ecommerceapp/pages/welcome_page/bloc/welcome_event.dart';
 import 'package:ecommerceapp/pages/welcome_page/bloc/welcome_state.dart';
-import 'package:ecommerceapp/pages/widgets.dart';
+import 'package:ecommerceapp/pages/welcome_page/widgets/widgets.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

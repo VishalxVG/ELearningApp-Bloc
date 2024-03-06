@@ -1,5 +1,5 @@
-import 'package:ecommerceapp/pages/application/bloc/app_event.dart';
-import 'package:ecommerceapp/pages/application/bloc/app_state.dart';
+import 'package:ecommerceapp/pages/application_page/bloc/app_event.dart';
+import 'package:ecommerceapp/pages/application_page/bloc/app_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppBlocs extends Bloc<AppEvent, AppState> {

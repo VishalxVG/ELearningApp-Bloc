@@ -48,48 +48,7 @@ class _HomePageState extends State<HomePage> {
                       childCount: 4,
                       (BuildContext context, int index) {
                         return GestureDetector(
-                          onTap: () {},
-                          child: Container(
-                            padding: EdgeInsets.all(10.w),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15.w),
-                              image: const DecorationImage(
-                                fit: BoxFit.fill,
-                                image: AssetImage("assets/icons/Image(1).png"),
-                              ),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "best course for IT and Engineering",
-                                  maxLines: 1,
-                                  overflow: TextOverflow.fade,
-                                  textAlign: TextAlign.left,
-                                  softWrap: false,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 11.sp,
-                                  ),
-                                ),
-                                Text(
-                                  "Flutter best course",
-                                  maxLines: 1,
-                                  overflow: TextOverflow.fade,
-                                  textAlign: TextAlign.left,
-                                  softWrap: false,
-                                  style: TextStyle(
-                                    color: AppColors.primaryFourElementText,
-                                    fontWeight: FontWeight.normal,
-                                    fontSize: 8.sp,
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        );
+                            onTap: () {}, child: courseGrid());
                       },
                     ),
                     gridDelegate:

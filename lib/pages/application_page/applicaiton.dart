@@ -1,8 +1,8 @@
 import 'package:ecommerceapp/common/utils/app_color.dart';
-import 'package:ecommerceapp/pages/application/bloc/app_bloc.dart';
-import 'package:ecommerceapp/pages/application/bloc/app_event.dart';
-import 'package:ecommerceapp/pages/application/bloc/app_state.dart';
-import 'package:ecommerceapp/pages/application/widgets/applicaiton_widget.dart';
+import 'package:ecommerceapp/pages/application_page/bloc/app_bloc.dart';
+import 'package:ecommerceapp/pages/application_page/bloc/app_event.dart';
+import 'package:ecommerceapp/pages/application_page/bloc/app_state.dart';
+import 'package:ecommerceapp/pages/application_page/widgets/applicaiton_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
