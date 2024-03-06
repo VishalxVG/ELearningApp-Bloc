@@ -63,12 +63,15 @@ var imageInfo = <String, String>{
   "Remainders": "cube.png"
 };
 
-Widget buildListView() {
+Widget buildListView(BuildContext context) {
   return Column(
     children: [
       ...List.generate(
         imageInfo.length,
         (index) => GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, "/settings_page");
+          },
           child: Container(
             margin: EdgeInsets.only(bottom: 15.h),
             child: Row(
