@@ -5,4 +5,6 @@ class AppConstants {
   static const String STORAGE_USER_PROFILE_KEY = 'user_profile_key';
   //key to store the info if user is already logedin
   static const String STORAGE_USER_TOKEN_KEY = "user_token_key";
+
+  static const String SERVER_API_URL = "http://10.3.71.209:8000/";
 }
