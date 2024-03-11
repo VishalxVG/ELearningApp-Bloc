@@ -1,4 +1,4 @@
-import 'package:ecommerceapp/common/utils/app_color.dart';
+import 'package:ecommerceapp/common/values/app_color.dart';
 import 'package:ecommerceapp/common/widgets/app_shadow.dart';
 import 'package:ecommerceapp/common/widgets/text_Widget.dart';
 

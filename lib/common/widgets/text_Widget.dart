@@ -1,6 +1,7 @@
-import 'package:ecommerceapp/common/utils/app_color.dart';
+import 'package:ecommerceapp/common/values/app_color.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget text24Normal({
   required String text,
@@ -58,6 +59,22 @@ Widget textUnderLine({String text = "Your Text"}) {
         decoration: TextDecoration.underline,
         decorationColor: AppColors.primaryText,
       ),
+    ),
+  );
+}
+
+Widget reusableText(
+  String text, {
+  Color color = AppColors.primaryText,
+  int fontSize = 16,
+  FontWeight fontWeight = FontWeight.bold,
+}) {
+  return Text(
+    text,
+    style: TextStyle(
+      color: color,
+      fontWeight: fontWeight,
+      fontSize: fontSize.sp,
     ),
   );
 }
