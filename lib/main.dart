@@ -1,10 +1,11 @@
 import 'package:ecommerceapp/common/routes/routes.dart';
 
-import 'package:ecommerceapp/common/utils/app_styles.dart';
+import 'package:ecommerceapp/common/values/app_styles.dart';
 import 'package:ecommerceapp/global.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<void> main() async {
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
         builder: (context, child) => MaterialApp(
+          builder: EasyLoading.init(),
           title: 'Flutter Demo For Ecommerse App',
 
           theme: AppTheme.appThemeData,

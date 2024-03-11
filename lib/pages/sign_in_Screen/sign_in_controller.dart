@@ -1,5 +1,10 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:convert';
+
+import 'package:ecommerceapp/common/apiS/user_api.dart';
+import 'package:ecommerceapp/common/entities/entities.dart';
+import 'package:ecommerceapp/common/routes/names.dart';
 import 'package:ecommerceapp/common/utils/constant.dart';
 import 'package:ecommerceapp/common/widgets/popup_message.dart';
 import 'package:ecommerceapp/global.dart';
@@ -8,6 +13,7 @@ import 'package:ecommerceapp/pages/sign_in_Screen/bloc/sing_in_bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class SignInController {
   final BuildContext context;
@@ -50,12 +56,24 @@ class SignInController {
 
           var user = credential.user;
           if (user != null) {
+            String? displayName = user.displayName;
+            String? email = user.email;
+            String? id = user.uid;
+            String? photoUrl = user.photoURL;
+
+            LoginRequestEntity loginRequestEntity = LoginRequestEntity();
+            loginRequestEntity.avatar = photoUrl;
+            loginRequestEntity.name = displayName;
+            loginRequestEntity.email = email;
+            loginRequestEntity.open_id = id;
+            loginRequestEntity.type = 1; //* Type 1 = Email Login
             // we got verified user from firebase
-            Global.storageService
-                .setString(AppConstants.STORAGE_USER_TOKEN_KEY, "123456789");
+            print("user Exists");
+            asyncPostAllData(loginRequestEntity);
+
             toastInfo("Welcome ${user.displayName}");
-            Navigator.pushNamedAndRemoveUntil(
-                context, "/application", (route) => false);
+            //Navigator.pushNamedAndRemoveUntil(
+            //  context, "/application", (route) => false);
           } else {
             // we have error getting verified user from firebase
             toastInfo("Your account does not exits");
@@ -79,6 +97,31 @@ class SignInController {
       }
     } catch (e) {
       print(e.toString());
+    }
+  }
+
+  Future<void> asyncPostAllData(LoginRequestEntity loginRequestEntity) async {
+    EasyLoading.show(
+      indicator: const CircularProgressIndicator(),
+      maskType: EasyLoadingMaskType.clear,
+      dismissOnTap: true,
+    );
+    var result = await UserAPI.login(parameters: loginRequestEntity);
+    if (result.code == 200) {
+      try {
+        Global.storageService.setString(
+            AppConstants.STORAGE_USER_PROFILE_KEY, jsonEncode(result.data!));
+        Global.storageService.setString(
+            AppConstants.STORAGE_USER_TOKEN_KEY, result.data!.access_token!);
+        EasyLoading.dismiss();
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil(AppRoutes.APPLICATION, (route) => false);
+      } catch (e) {
+        print("saving local storage error");
+      }
+    } else {
+      EasyLoading.dismiss();
+      toastInfo("unknown error");
     }
   }
 }

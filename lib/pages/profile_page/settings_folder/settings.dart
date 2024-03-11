@@ -31,6 +31,7 @@ class _SettingPageState extends State<SettingPage> {
       body: SingleChildScrollView(
         child: BlocBuilder<SettingsBlocs, SettingsStates>(
           builder: (context, state) {
+            // ignore: avoid_unnecessary_containers
             return Container(
               child: Column(
                 children: [

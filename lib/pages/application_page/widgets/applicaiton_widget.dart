@@ -1,6 +1,6 @@
 // ignore_for_file: file_names
 
-import 'package:ecommerceapp/common/utils/app_color.dart';
+import 'package:ecommerceapp/common/values/app_color.dart';
 import 'package:ecommerceapp/pages/home_page/home_page.dart';
 import 'package:ecommerceapp/pages/profile_page/profile_page.dart';
 import 'package:flutter/material.dart';

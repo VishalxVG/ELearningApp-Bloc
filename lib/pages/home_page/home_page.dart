@@ -1,4 +1,4 @@
-import 'package:ecommerceapp/common/utils/app_color.dart';
+import 'package:ecommerceapp/common/values/app_color.dart';
 import 'package:ecommerceapp/pages/home_page/bloc/home_page_bloc.dart';
 import 'package:ecommerceapp/pages/home_page/bloc/home_page_state.dart';
 import 'package:ecommerceapp/pages/home_page/widgets/home_page_widgets.dart';

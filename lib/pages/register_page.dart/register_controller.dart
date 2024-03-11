@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/common/utils/constant.dart';
 import 'package:ecommerceapp/common/widgets/popup_message.dart';
 import 'package:ecommerceapp/pages/register_page.dart/bloc/register_page_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -42,7 +43,8 @@ class RegisterController {
       if (credential.user != null) {
         await credential.user?.sendEmailVerification();
         await credential.user?.updateDisplayName(userName);
-
+        String photoUrl = "${AppConstants.SERVER_API_URL}uploads/default.png";
+        await credential.user?.updatePhotoURL(photoUrl);
         toastInfo("An email is sent to your email to register");
 
         Navigator.of(context).pop();
