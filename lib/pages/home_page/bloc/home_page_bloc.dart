@@ -6,8 +6,12 @@ class HomePageBlocs extends Bloc<HomePageEvents, HomePageStates> {
   HomePageBlocs() : super(HomePageStates()) {
     on<HomePageDots>(
       (event, emit) {
-        emit(state.copyWith(event.index));
+        emit(state.copyWith(index: event.index));
       },
     );
+
+    on<HomePageCourseItem>((event, emit) {
+      emit(state.copyWith(courseItem: event.courseItem));
+    });
   }
 }

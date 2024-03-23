@@ -1,9 +1,19 @@
-class HomePageStates {
-  HomePageStates({this.index = 0});
-  final int index;
+import 'package:ecommerceapp/common/entities/course.dart';
 
-  HomePageStates copyWith(int? index) {
+class HomePageStates {
+  final int index;
+  final List<CourseItem> courseItem;
+  HomePageStates({
+    this.index = 0,
+    this.courseItem = const <CourseItem>[],
+  });
+
+  HomePageStates copyWith({
+    int? index,
+    List<CourseItem>? courseItem,
+  }) {
     return HomePageStates(
+      courseItem: courseItem ?? this.courseItem,
       index: index ?? this.index,
     );
   }

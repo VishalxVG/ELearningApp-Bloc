@@ -1,4 +1,5 @@
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:ecommerceapp/common/utils/constant.dart';
 import 'package:ecommerceapp/common/values/app_color.dart';
 import 'package:ecommerceapp/pages/home_page/bloc/home_page_bloc.dart';
 import 'package:ecommerceapp/pages/home_page/bloc/home_page_event.dart';
@@ -8,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-AppBar buildAppBar() {
+AppBar buildAppBar(String avatar) {
   return AppBar(
     title: Container(
       margin: EdgeInsets.only(left: 7.w, right: 7.w),
@@ -24,9 +25,12 @@ AppBar buildAppBar() {
             child: Container(
               width: 40.w,
               height: 40.h,
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage("assets/icons/person.png"))),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  // image: NetworkImage(avatar),
+                  image: NetworkImage("${AppConstants.SERVER_API_URL}$avatar"),
+                ),
+              ),
             ),
           )
         ],
