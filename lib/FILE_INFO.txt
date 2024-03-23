@@ -45,4 +45,41 @@ FIREBASE ERRORS :
 ///
 
 
+/// Possible App Errors 
+    - Int is not a subtype of String
+        This error says , the data returned is int , but we are storing it as a String
+        During backend , the price was stored as decimal in backend , but in flutter local storage , we are storing it as a String
+        That time we are getting this error 
+        *> Solution : Convert the int returned to String using "toString()" function
 
+    - The CourseList is not getting updated as it should 
+        When u r calling HomePageCourseList event to update the HomePageStates , the state might not 
+        get updated as it should
+        The possible reason for this is that while getting data from the backend , we maybe calling the 
+        couseItem before the data is getting updated
+        *Solution : Only update the state if result.data is not empty
+            meaning the bloc state will only update if the result is not empty
+
+
+
+
+LOGIC SOFAR:
+
+>> REGISTRATION:
+    * RegisterController 
+            - handleRegister(): 
+                We pass our states to it , and call createUserWithEmailAndPassword()
+                If user created , we send a verification mail 
+                Update display name , and photo Url(From backend -> Php Laravel File -> ulearningApp/public/uploads/default.png)
+                             
+>> SIGNIN/LOGIN
+    * SignInController
+        -handleSignIn():
+            We handle state first , then check for default errors 
+            Check if user exist with that particular email and password
+            If user exits , we make a loginRequestEntity object and pass values to it
+            Then we pass the data into the backend by calling the api "UserApi" -> login method
+            We use "Dio" package to call the api . we created another funciton "HttpUtil" that handles
+            post , get , put etc funtions of the api .
+            Then we use out Global function which updates out local storage with user tokens and user profile key
+            THis "Global" is used to see if a user is already logined or not 
