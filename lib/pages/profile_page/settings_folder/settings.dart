@@ -22,6 +22,7 @@ class _SettingPageState extends State<SettingPage> {
     void removeUserData() {
       context.read<AppBlocs>().add(const TriggerAppEvent(0));
       Global.storageService.remove(AppConstants.STORAGE_USER_TOKEN_KEY);
+      Global.storageService.remove(AppConstants.STORAGE_USER_PROFILE_KEY);
       Navigator.of(context)
           .pushNamedAndRemoveUntil(AppRoutes.SIGN_IN, (route) => false);
     }
