@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:ecommerceapp/common/entities/entities.dart';
 import 'package:ecommerceapp/common/utils/constant.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -27,7 +30,23 @@ class StorageService {
         : true;
   }
 
+  //To get the user access token for authorization into sanctum
+  String getUserToken() {
+    return _prefs.getString(AppConstants.STORAGE_USER_TOKEN_KEY) ?? "";
+  }
+
   Future<bool> remove(String key) {
     return _prefs.remove(key);
+  }
+
+  UserItem? getUserProfile() {
+    var profileOffline =
+        _prefs.getString(AppConstants.STORAGE_USER_PROFILE_KEY) ?? "";
+
+    if (profileOffline.isNotEmpty) {
+      // jsonDecode converts the string profileOffline to Json Format
+      return UserItem.fromJson(jsonDecode(profileOffline));
+    }
+    return null;
   }
 }
